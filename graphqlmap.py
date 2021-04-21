@@ -32,8 +32,13 @@ class GraphQLmap(object):
         print(" " * 30, end='')
         print(f"\033[1mAuthor\033[0m: {self.author} \033[1mVersion\033[0m: {self.version} ")
         self.args = args_graphql
-        self.url = args_graphql.url
-        self.method = args_graphql.method
+        self.url = args_graphql
+
+        if args_graphql.method != None:
+        	self.method = args_graphql.method
+        else:
+        	self.method = "POST"
+
         self.headers = None if not args_graphql.headers else json.loads(args_graphql.headers)
         self.use_json = True if args_graphql.use_json else False
 
